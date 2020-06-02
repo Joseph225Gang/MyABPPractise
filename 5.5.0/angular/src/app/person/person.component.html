@@ -1,0 +1,53 @@
+<p>person works!</p>
+
+Height:<input type="text" [(ngModel)]="createPerson.height"/><br>
+Weight:<input type="text" [(ngModel)]="createPerson.weight"/><br>
+<button
+type="button"
+class="btn btn-sm bg-danger mx-2"
+(click)="create()"
+>
+<i class="fas fa-trash"></i>
+{{ "Create" | localize }}
+</button>
+<div class="card-body table-responsive p-0">
+    <table class="table table-hover text-nowrap" [busy]="isTableLoading">
+      <thead class="bg-light">
+        <tr>
+          <th>{{ "Height" | localize }}</th>
+          <th>{{ "Weight" | localize }}</th>
+          <th style="width: 200px;">{{ "Actions" | localize }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let person of persons
+          "
+        >
+          <td *ngIf="person.editable === false">{{ person.height }}</td>
+          <td *ngIf="person.editable === false">{{ person.weight }}</td>
+          <td *ngIf="person.editable === true"><input type="text" [(ngModel)]="person.height"/></td>
+          <td *ngIf="person.editable === true"><input type="text" [(ngModel)]="person.weight"/></td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-sm bg-secondary"
+              (click)="editPerson(person)"
+            >
+              <i class="fas fa-pencil-alt"></i>
+              {{ "Edit" | localize }}
+            </button>
+            <button
+              type="button"
+              class="btn btn-sm bg-danger mx-2"
+              (click)="delete(person)"
+            >
+              <i class="fas fa-trash"></i>
+              {{ "Delete" | localize }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
