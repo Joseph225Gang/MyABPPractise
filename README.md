@@ -1,5 +1,5 @@
 # MyABPPractise
-asp.net boilerplate。asp.net zero和angular
+asp.net boilerplate.asp.net zero, angular
 
 repository pattern, generic, automapper, DTOs
 
